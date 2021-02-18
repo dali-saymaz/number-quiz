@@ -75,23 +75,23 @@ getNewQuestion = () => {
 
 
 choices.forEach(choice => {
-  choice.addEventListener("click",e=>{
+  choice.addEventListener("click", e => {
     if (!acceptingAnswers) return;
 
     acceptingAnswers = false;
-    const selectedChoise = e.target;//tıklanan seceneğ, aktarıyoruz
-    const selectedAnswer = selectedChoise.dataset['number'];//burada dataset ile choise un numarası alınıyor
+    const selectedChoice = e.target;
+    const selectedAnswer = selectedChoice.dataset["number"];
 
-    //bu kisim secilen sik dogru ise yesil yanlissa kirmizi renk veriyor correct ve incorrecte css yazdim
     const classToApply =
-    selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-  selectedChoice.parentElement.classList.add(classToApply);
+      selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-  setTimeout(() => {
-    selectedChoice.parentElement.classList.remove(classToApply);
-    getNewQuestion();
-  }, 1000);//settimeout koymamin sebebi hemen ekrandan kayboluyor 1 saniye ekranda durum gozukmesi icin
-  })
+    selectedChoice.parentElement.classList.add(classToApply);
+
+    setTimeout(() => {
+      selectedChoice.parentElement.classList.remove(classToApply);
+      getNewQuestion();
+    }, 1000);
+  });
 });
 
   
